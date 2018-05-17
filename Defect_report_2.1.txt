@@ -1,1 +1,1 @@
-We are initializing the struct PageRange but not the field "first".
+By looking at the valgrind output, we see that we get message "Conditional jump or move depends on uninitialised value(s)". Which points to line 42, in function addrange, were a call to makerange is done. In makerange we are initializing a PageRange new but the field "first" remaines uninitialised and is causing the problem.
